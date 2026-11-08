@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Acne Tracker Support</title>
+<style>
+  :root {
+    --bg: #ffffff; --text: #1d1d1f; --muted: #6e6e73; --accent: #2a948f; --card: #f4f6f6; --border: #e3e7e7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #111314; --text: #f2f2f2; --muted: #a1a1a6; --accent: #4abaa9; --card: #1c1f20; --border: #2c3132; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  main { max-width: 680px; margin: 0 auto; padding: 40px 20px 64px; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 0 0 6px; }
+  h2 { font-size: 20px; margin: 32px 0 8px; }
+  h3 { font-size: 17px; margin: 20px 0 4px; }
+  p { margin: 0 0 12px; }
+  .muted { color: var(--muted); font-size: 15px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px; margin: 24px 0; }
+  .contact { border-left: 4px solid var(--accent); }
+  a { color: var(--accent); }
+  footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Acne Tracker</h1>
+  <p class="muted">A private daily photo journal for your skin, for iPhone.</p>
+
+  <div class="card contact">
+    <strong>Need help?</strong> Email <a href="mailto:leviguo741@gmail.com">leviguo741@gmail.com</a>.
+    Please include your iPhone model and iOS version.
+  </div>
+
+  <h2>Frequently asked questions</h2>
+
+  <h3>How do I add today's photo?</h3>
+  <p>Open the <strong>Journal</strong> tab and tap <strong>Take Photo</strong> or <strong>Library</strong>.
+  You can add several photos per day with <strong>Add another photo</strong>.</p>
+
+  <h3>How do I mark spots?</h3>
+  <p>After adding a photo, the marking screen opens. Use <strong>Box</strong> to drag a box (or tap to drop one),
+  <strong>Pen</strong> to color over an area, and <strong>Erase</strong> to remove a mark. Pinch to zoom.
+  Tap a photo on the day page to edit its marks later.</p>
+
+  <h3>How do I change a check-in?</h3>
+  <p>On the day page, tap <strong>Edit</strong> next to Check-in.</p>
+
+  <h3>I don't get the daily reminder.</h3>
+  <p>Make sure it's on in the app under <strong>Settings → Daily reminder</strong>, and that notifications are allowed
+  for Acne Tracker in the iPhone <strong>Settings → Notifications</strong>. Focus modes can also silence it.</p>
+
+  <h3>Where is my data stored?</h3>
+  <p>Only on your iPhone. Nothing is uploaded and there are no accounts. See the <a href="privacy.html">privacy policy</a>.</p>
+
+  <h3>How do I delete everything?</h3>
+  <p>In the app, go to <strong>Settings → Delete All Data</strong>. Deleting the app also removes its data.</p>
+
+  <h3>Will my data move to a new iPhone?</h3>
+  <p>Yes, if you restore the new iPhone from an iCloud or computer backup of the old one.</p>
+
+  <h2>Important</h2>
+  <p>Acne Tracker is a personal journal. It is not a medical device and does not diagnose, treat or give advice
+  about any skin condition. For medical concerns, talk to a doctor or dermatologist.</p>
+
+  <footer class="muted"><a href="privacy.html">Privacy Policy</a></footer>
+</main>
+</body>
+</html>
