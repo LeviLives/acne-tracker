@@ -1,6 +1,6 @@
-# Acne Tracker: support and privacy pages
+# SpeckLog: support and privacy pages
 
-Public pages for the Acne Tracker iPhone app, served by GitHub Pages:
+Public pages for the SpeckLog iPhone app, served by GitHub Pages:
 
 - Support: https://levilives.github.io/acne-tracker/
 - Privacy policy: https://levilives.github.io/acne-tracker/privacy.html
