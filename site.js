@@ -3,6 +3,8 @@
   const LANGUAGE_KEY = 'specklog-language';
   const CHINESE = 'zh-Hans';
   const ENGLISH = 'en';
+  // Launch checklist: set this to the live SpeckLog App Store listing URL after approval.
+  const APP_STORE_URL = '';
   const root = document.documentElement;
   const main = document.querySelector('main');
   if (!main) return;
@@ -35,11 +37,13 @@
       pages: 'Pages', language: 'Language', theme: 'Theme', light: 'Light', dark: 'Dark',
       help: 'Problem?', controls: 'Site controls', loading: 'Loading…',
       failed: 'Couldn’t change the language. Please try again.',
+      appIcon: 'SpeckLog app icon', storeComing: 'App Store link coming soon', store: 'View SpeckLog on the App Store',
     },
     'zh-Hans': {
       pages: '页面', language: '语言', theme: '外观', light: '浅色', dark: '深色',
       help: '遇到问题？', controls: '网站设置', loading: '正在加载…',
       failed: '没能切换语言，请重试。',
+      appIcon: 'SpeckLog 应用图标', storeComing: '上架后会添加 App Store 链接', store: '在 App Store 查看 SpeckLog',
     },
   };
 
@@ -65,6 +69,34 @@
   const languageControl = header.querySelector('.language-control');
   const themeControl = header.querySelector('.theme-control');
   const status = header.querySelector('.site-status');
+
+  function renderPageTitle() {
+    const title = main.querySelector('h1');
+    if (!title) return;
+    const words = copy[language];
+    const row = document.createElement('header');
+    row.className = 'page-title';
+    const icon = document.createElement('img');
+    icon.className = 'title-app-icon';
+    icon.src = 'specklog-app-icon.png';
+    icon.width = 192;
+    icon.height = 192;
+    title.before(row);
+    row.append(title);
+    if (APP_STORE_URL) {
+      const link = document.createElement('a');
+      link.className = 'app-store-link';
+      link.href = APP_STORE_URL;
+      link.setAttribute('aria-label', words.store);
+      icon.alt = '';
+      link.append(icon);
+      row.append(link);
+    } else {
+      icon.alt = words.appIcon;
+      icon.title = words.storeComing;
+      row.append(icon);
+    }
+  }
 
   function setMode(value) {
     dark = value;
@@ -151,6 +183,7 @@
       root.lang = language;
       document.title = content.title;
       main.innerHTML = content.html;
+      renderPageTitle();
       const search = main.querySelector('#q');
       if (search && query) search.value = query;
       filterQuestions();
@@ -191,6 +224,7 @@
     if (event.key === LANGUAGE_KEY) showLanguage(event.newValue, false);
   });
 
+  renderPageTitle();
   updateControls();
   showLanguage(stored(LANGUAGE_KEY), false);
 })();

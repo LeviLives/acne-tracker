@@ -3,18 +3,22 @@
   --bg: #e6e1d7; --card: #f1ede5; --text: #26241f; --muted: #5b574f; --outline: #39362e;
   --fill: #ddd7cb; --accent: #302d26; --callout: #e9e3d8;
   --outline-width: 3px;
+  --page-width: 700px;
+  --page-gutter: 16px;
+  --controls-width: 180px;
+  --controls-gap: 24px;
   color-scheme: light;
 }
 :root[data-theme="dark"] {
-  --bg: #21150e; --card: #2e1e15; --text: #f4eee8; --muted: #cabbb0; --outline: #f1ded0;
-  --fill: #442e22; --accent: #f1ded0; --callout: #372419;
+  --bg: #171310; --card: #221b17; --text: #f4eee8; --muted: #cabbb0; --outline: #f1ded0;
+  --fill: #342a24; --accent: #f1ded0; --callout: #2a221d;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
 html { background: var(--bg); }
 body {
   margin: 0; background: var(--bg); color: var(--text);
-  font: 17px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font: 475 17px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 /* Text selection hugs the text: Safari fills the gaps between selected blocks out to the page
@@ -24,9 +28,14 @@ body, main, ul, ol, section, .topic, .entry, .box { display: flex; flex-directio
 li { display: list-item; }
 .hidden { display: none !important; }
 
-main { width: 100%; max-width: 700px; margin: 0 auto; padding: 28px 16px 64px; }
+main { width: 100%; max-width: var(--page-width); margin: 0 auto; padding: 28px var(--page-gutter) 64px; }
 .site-header + main { padding-bottom: calc(180px + env(safe-area-inset-bottom)); }
 h1 { font-size: 36px; line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 8px; }
+.page-title { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 8px; }
+.page-title h1 { min-width: 0; margin: 0; }
+.title-app-icon { display: block; flex: none; width: clamp(48px, 7vw, 64px); height: auto; }
+.app-store-link { flex: none; border-radius: 23%; }
+.app-store-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 /* Section titles: grey and bold above a card, like the app's Settings. */
 h2 { font-size: 21px; font-weight: 700; color: var(--muted); margin: 26px 0 8px 4px; }
 h3 { font-size: 17px; font-weight: 700; margin: 0 0 4px; }
@@ -70,8 +79,11 @@ section.qa h3 a { color: inherit; text-decoration: none; }
 
 /* All page, language and appearance controls live together. */
 .site-header {
-  position: fixed; bottom: max(12px, env(safe-area-inset-bottom)); right: max(12px, env(safe-area-inset-right));
-  z-index: 10; width: min(180px, calc(100% - 24px));
+  position: fixed; bottom: max(12px, env(safe-area-inset-bottom));
+  /* Follow the text column until the window edge is the tighter constraint. */
+  right: max(12px, env(safe-area-inset-right),
+    calc((100% - var(--page-width)) / 2 + var(--page-gutter) - var(--controls-gap) - var(--controls-width)));
+  z-index: 10; width: min(var(--controls-width), calc(100% - 24px));
 }
 .site-controls { display: grid; gap: 4px; }
 .site-pages { position: relative; }
