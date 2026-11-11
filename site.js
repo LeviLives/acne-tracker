@@ -4,12 +4,15 @@
 (function () {
   var KEY = 'specklog-mode';
   var root = document.documentElement;
+  var chinese = root.lang === 'zh-Hans';
   function current() { return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'; }
   function apply(mode) {
     if (mode === 'dark') root.setAttribute('data-theme', 'dark'); else root.removeAttribute('data-theme');
     try { localStorage.setItem(KEY, mode); } catch (e) {}
-    button.textContent = mode === 'dark' ? '☀︎ Light' : '☾ Dark';
-    button.setAttribute('aria-label', mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    var light = mode === 'dark';
+    button.textContent = chinese ? (light ? '☀︎ 浅色' : '☾ 深色') : (light ? '☀︎ Light' : '☾ Dark');
+    button.setAttribute('aria-label', chinese ? (light ? '切换到浅色模式' : '切换到深色模式')
+                                               : (light ? 'Switch to light mode' : 'Switch to dark mode'));
   }
   var button = document.createElement('button');
   button.className = 'mode-toggle';
