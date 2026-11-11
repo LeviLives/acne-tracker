@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SpeckLog Questions &amp; Answers</title>
+<link rel="alternate" hreflang="zh-Hans" href="faq-zh.html">
 <script>try{if(localStorage.getItem('specklog-mode')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
-<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="site.css?v=2">
 </head>
 <body>
 <main>
   <h1>Questions &amp; Answers</h1>
   <p class="muted">Help for SpeckLog, the private daily photo journal for your skin.</p>
-  <nav class="muted"><a href="index.html">Support</a><a href="updates.html">What’s new</a><a href="privacy.html">Privacy Policy</a></nav>
   <input type="search" id="q" placeholder="Search questions" aria-label="Search questions">
-  <p class="muted hidden" id="none">No answers found. Email <a href="mailto:leviguo741@gmail.com">leviguo741@gmail.com</a>.</p>
+  <p class="muted hidden" id="none">No answers found. Email <a href="mailto:tianyiguo741@gmail.com">tianyiguo741@gmail.com</a>.</p>
   <div class="topic">
   <h2>Getting started</h2>
   <div class="box">
@@ -28,11 +28,11 @@
   <div class="box">
   <section class="qa" id="marks">
     <h3><a href="#marks" style="color:inherit;text-decoration:none">How do I mark spots?</a></h3>
-    <p>After adding a photo, the marking screen opens. With the <strong>Star</strong> (or Box / Flower) tool, tap to drop a mark or drag to size one. With the <strong>Pen</strong>, paint over an area. The <strong>Eraser</strong> removes marks, and <strong>Pan</strong> moves the photo. Pinch to zoom with any tool. To adjust a mark, tap it: drag the round handle above it to turn it, the corner to resize it, and the handle below it to move it. Tap the photo on the day page later to edit its marks.</p>
+    <p>After adding a photo, the marking screen opens. With the <strong>Star</strong> (or Box / Flower) tool, tap to drop a mark or drag to size one. With the <strong>Pen</strong>, paint over an area. The <strong>Eraser</strong> removes marks, and <strong>Pan</strong> moves the photo. Pinch to zoom with any tool. To adjust a mark, tap it: drag the round handle above it to turn it, the corner to resize it, and the handle below it to move it. On the day page, tap “N spots marked” on the photo to edit its marks.</p>
   </section>
   <section class="qa" id="mark-style">
     <h3><a href="#mark-style" style="color:inherit;text-decoration:none">Can I change how marks look?</a></h3>
-    <p>Yes: Settings → Appearance → More options → Marks on photos, or the style button in the marking screen. Star and red Box are free; Flower and other box colors come with SpeckLog Plus. Only the drawing changes: every mark keeps its place and size.</p>
+    <p>Yes: Settings → Appearance → More options → Marks on photos, or the style button in the marking screen. Star and the green Box are free; Flower and other box colors come with SpeckLog Plus. Only the drawing changes: every mark keeps its place and size.</p>
   </section>
   <section class="qa" id="deleted-photos">
     <h3><a href="#deleted-photos" style="color:inherit;text-decoration:none">I deleted a photo by mistake. Can I get it back?</a></h3>
@@ -174,7 +174,7 @@
   <div class="box">
   <section class="qa" id="privacy">
     <h3><a href="#privacy" style="color:inherit;text-decoration:none">Is my data uploaded anywhere?</a></h3>
-    <p>No. Photos and check-ins are stored only on your iPhone, there's no account, and Patterns and Insights are worked out on the device. We don't collect analytics, usage data or crash reports. Purchases go through Apple, and we never see your payment details. Read the full <a href="privacy.html">privacy policy</a>.</p>
+    <p>By default, photos and check-ins stay on your iPhone. If you turn on iCloud Sync, a copy goes to your own private iCloud. SpeckLog has no account of its own, and Patterns and Insights run on the device. We don't collect analytics, usage data or crash reports. Purchases go through Apple, and we never see your payment details. Read the full <a href="privacy.html">privacy policy</a>.</p>
   </section>
   <section class="qa" id="medical">
     <h3><a href="#medical" style="color:inherit;text-decoration:none">Is SpeckLog medical advice?</a></h3>
@@ -184,27 +184,10 @@
   </div>
 
   <div class="card contact">
-    <strong>Still stuck?</strong> Email <a href="mailto:leviguo741@gmail.com">leviguo741@gmail.com</a>.
+    <strong>Still stuck?</strong> Email <a href="mailto:tianyiguo741@gmail.com">tianyiguo741@gmail.com</a>.
     Please include your iPhone model and iOS version.
   </div>
-  <footer class="muted"><a href="index.html">Support</a> · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a></footer>
 </main>
-<script>
-  const q = document.getElementById('q');
-  q.addEventListener('input', () => {
-    const words = q.value.toLowerCase().split(/\s+/).filter(Boolean);
-    let shown = 0;
-    document.querySelectorAll('.topic').forEach(topic => {
-      let any = false;
-      topic.querySelectorAll('.qa').forEach(s => {
-        const hit = words.every(w => s.textContent.toLowerCase().includes(w));
-        s.classList.toggle('hidden', !hit); if (hit) { any = true; shown++; }
-      });
-      topic.classList.toggle('hidden', !any);
-    });
-    document.getElementById('none').classList.toggle('hidden', shown > 0);
-  });
-</script>
-<script src="site.js"></script>
+<script src="site.js?v=2"></script>
 </body>
 </html>
