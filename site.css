@@ -1,0 +1,85 @@
+/* SpeckLog site style (2026-11-11): the app's default look. Light mode by default: a light grey
+   page, white cards with thick near-black outlines, black text, grey section titles. Dark mode
+   (the "Dark" button, remembered for every page on this site) uses near-white outlines, like
+   the app. Edit here, not in the pages. */
+:root {
+  --bg: #f2f2f7; --card: #ffffff; --text: #000000; --muted: #6c6c70; --outline: #111111;
+  --fill: #e9e9ee; --accent: #111111; --callout: #f2f2f7;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --bg: #000000; --card: #1c1c1e; --text: #ffffff; --muted: #98989f; --outline: #e6e6e6;
+  --fill: #2c2c2e; --accent: #ffffff; --callout: #2c2c2e;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 17px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+/* Text selection hugs the text: Safari fills the gaps between selected blocks out to the page
+   edges, but not inside flex columns, so the containers are flex columns (margins don't
+   collapse in them, so spacing is set with margin-bottom only). */
+body, main, ul, ol, section, .topic, .entry, .box { display: flex; flex-direction: column; }
+li { display: list-item; }
+.hidden { display: none !important; }
+
+main { width: 100%; max-width: 700px; margin: 0 auto; padding: 72px 16px 64px; }
+h1 { font-size: 36px; line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 8px; }
+/* Section titles: grey and bold above a card, like the app's Settings. */
+h2 { font-size: 21px; font-weight: 700; color: var(--muted); margin: 26px 0 8px 4px; }
+h3 { font-size: 17px; font-weight: 700; margin: 0 0 4px; }
+p { margin: 0 0 12px; }
+ul, ol { margin: 0 0 12px; padding-left: 22px; }
+li { margin: 0 0 6px; }
+a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+strong { font-weight: 700; }
+.muted { color: var(--muted); font-size: 15px; }
+
+/* Cards: white, rounded, a thick outline. */
+.box, .card, .summary, .entry {
+  background: var(--card); border: 3px solid var(--outline); border-radius: 22px;
+  padding: 16px 18px; margin: 0 0 18px;
+}
+.box > :last-child, .card > :last-child, .summary > :last-child, .entry > :last-child { margin-bottom: 0; }
+.box > h3:not(:first-child) { margin-top: 10px; padding-top: 12px; border-top: 1px solid var(--fill); }
+.card { display: block; }
+.contact, .summary { display: block; }
+/* A highlighted note inside a card. */
+.box .card { border-width: 2px; border-radius: 16px; background: var(--callout); }
+
+/* Page links (Support · What's new · …) as small outlined pills. */
+nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 18px; }
+nav a {
+  text-decoration: none; color: var(--text); font-size: 15px; font-weight: 600;
+  padding: 6px 14px; border-radius: 999px; background: var(--card); border: 2px solid var(--outline);
+}
+footer { margin-top: 28px; text-align: center; }
+
+/* FAQ */
+input[type=search] {
+  width: 100%; font: inherit; padding: 12px 16px; border-radius: 16px; border: 3px solid var(--outline);
+  background: var(--card); color: var(--text); margin: 4px 0 8px; outline: none;
+}
+section.qa { scroll-margin-top: 16px; }
+.box > section.qa + section.qa { margin-top: 10px; padding-top: 12px; border-top: 1px solid var(--fill); }
+section.qa:target { background: var(--fill); border-radius: 12px; padding: 8px 12px; margin-left: -12px; margin-right: -12px; }
+section.qa h3 a { color: inherit; text-decoration: none; }
+
+/* What's new */
+.entry h3 { margin: 0 0 2px; font-size: 19px; }
+.date { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
+.entry ul { margin: 6px 0 0; padding-left: 20px; }
+.tag {
+  display: inline-block; font-size: 12px; font-weight: 700; padding: 1px 9px; border-radius: 999px;
+  background: var(--fill); border: 2px solid var(--outline); margin-left: 6px; vertical-align: middle;
+}
+
+/* The Light / Dark button, top right like the app's Tip Jar pill. */
+.mode-toggle {
+  position: fixed; top: 14px; right: 14px; z-index: 10; font: 600 15px/1 -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text); background: var(--card); border: 2px solid var(--outline); border-radius: 999px;
+  padding: 9px 14px; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+}

@@ -4,34 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SpeckLog Questions &amp; Answers</title>
-<style>
-  :root {
-    --bg: #ffffff; --text: #1d1d1f; --muted: #6e6e73; --accent: #2a948f; --card: #f4f6f6; --border: #e3e7e7;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root { --bg: #111314; --text: #f2f2f2; --muted: #a1a1a6; --accent: #4abaa9; --card: #1c1f20; --border: #2c3132; }
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; background: var(--bg); color: var(--text);
-    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  }
-  main { max-width: 680px; margin: 0 auto; padding: 40px 20px 64px; }
-  h1 { font-size: 30px; line-height: 1.2; margin: 0 0 6px; }
-  h2 { font-size: 20px; margin: 32px 0 8px; }
-  h3 { font-size: 17px; margin: 20px 0 4px; }
-  p { margin: 0 0 12px; }
-  .muted { color: var(--muted); font-size: 15px; }
-  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px; margin: 24px 0; }
-  .contact { border-left: 4px solid var(--accent); }
-  a { color: var(--accent); }
-  footer { margin-top: 48px; }
-  input[type=search] { width: 100%; font: inherit; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border); background: var(--card); color: var(--text); margin: 16px 0 4px; }
-  section.qa { scroll-margin-top: 16px; }
-  section.qa:target { background: var(--card); border-radius: 12px; padding: 4px 14px; margin: 0 -14px; }
-  .hidden { display: none; }
-  nav a { margin-right: 12px; }
-</style>
+<script>try{if(localStorage.getItem('specklog-mode')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
 <main>
@@ -42,13 +16,16 @@
   <p class="muted hidden" id="none">No answers found. Email <a href="mailto:leviguo741@gmail.com">leviguo741@gmail.com</a>.</p>
   <div class="topic">
   <h2>Getting started</h2>
+  <div class="box">
   <section class="qa" id="start">
     <h3><a href="#start" style="color:inherit;text-decoration:none">How do I use SpeckLog each day?</a></h3>
     <p>Open the <strong>Journal</strong> tab, take a photo (or pick one from your library), mark your spots, then do the check-in: spot counts, stress, sleep, food and drink. It takes about a minute. The welcome tour (Settings → Help → <strong>Take the Tour</strong>) shows where everything is.</p>
   </section>
   </div>
+  </div>
   <div class="topic">
   <h2>Photos &amp; marks</h2>
+  <div class="box">
   <section class="qa" id="marks">
     <h3><a href="#marks" style="color:inherit;text-decoration:none">How do I mark spots?</a></h3>
     <p>After adding a photo, the marking screen opens. With the <strong>Star</strong> (or Box / Flower) tool, tap to drop a mark or drag to size one. With the <strong>Pen</strong>, paint over an area. The <strong>Eraser</strong> removes marks, and <strong>Pan</strong> moves the photo. Pinch to zoom with any tool. To adjust a mark, tap it: drag the round handle above it to turn it, the corner to resize it, and the handle below it to move it. Tap the photo on the day page later to edit its marks.</p>
@@ -62,8 +39,10 @@
     <p>Yes, for 30 days: Settings → Data → Recently Deleted. Tap the photo and choose Restore to Its Day; it comes back with its marks and position. Days removed with Delete Days go there too, with their check-ins. After 30 days they're erased for good.</p>
   </section>
   </div>
+  </div>
   <div class="topic">
   <h2>Check-in</h2>
+  <div class="box">
   <section class="qa" id="spots">
     <h3><a href="#spots" style="color:inherit;text-decoration:none">How should I count spots?</a></h3>
     <p><strong>Large / painful</strong> = deep, sore or swollen spots; <strong>Small / mild</strong> = everything else. Tap the arrows or type the number. Your best guess is fine: counting the same way each day matters more than being exact.</p>
@@ -73,8 +52,10 @@
     <p>Yes. Add yes/no items such as “Shaved” or “Traveled” at the bottom of the check-in or in Settings → Check-in items. They show up in Insights, Patterns and experiments, counted from the day you added them. Removing an item only hides it, so its history stays.</p>
   </section>
   </div>
+  </div>
   <div class="topic">
   <h2>Skincare, routines &amp; goals</h2>
+  <div class="box">
   <section class="qa" id="skincare">
     <h3><a href="#skincare" style="color:inherit;text-decoration:none">How do I log my skincare?</a></h3>
     <p>Add your products in Settings → Skincare → <strong>Skincare Vault</strong> (type, name, brand, ingredients, and photos of the bottle and the ingredients list). In the daily check-in, <strong>Skincare today</strong> has Morning and Evening: tap what you used. Tap a product’s photo to see it full screen (swipe to the ingredients list, pinch to zoom). Touch and hold a product in the vault to pin it to the top. A photo you replace or remove waits in Recently Deleted for 30 days.</p>
@@ -88,8 +69,10 @@
     <p>Set one goal for the week on your Journal page. Once saved it’s locked in. At the end of the week (Sunday, or your first visit after), SpeckLog asks how it went: green (met it), yellow (partly) or red (not this time), and the goal keeps that colored dot. Tap <strong>Your week</strong> any day for a summary of the week so far.</p>
   </section>
   </div>
+  </div>
   <div class="topic">
   <h2>Patterns &amp; Insights</h2>
+  <div class="box">
   <section class="qa" id="patterns">
     <h3><a href="#patterns" style="color:inherit;text-decoration:none">How do Patterns work?</a></h3>
     <p>SpeckLog turns each habit into how often you did it over the last 7 days, then compares that with your spot counts 0 to 7 days later. Two checks are used:</p><p><strong>One at a time:</strong> a correlation for each habit at each delay. Because habits and skin come in stretches, neighbouring days aren't independent, so SpeckLog works out an <em>effective number of days</em> (often 15–30 out of 180) and uses a cautious range so chance alone rarely shows up as a link.</p><p><strong>All together:</strong> a regression with every habit at once, so habits that change together (stressful weeks with more fast food) share the credit instead of each looking linked.</p><p>Patterns need about 6 weeks of check-ins with spot counts. All of it runs on your iPhone. The formulas are in the app under Settings → Patterns &amp; Insights → “The math behind it”.</p>
@@ -103,8 +86,10 @@
     <p><strong>Compare</strong> picks one habit: each day is a blue column, darker when you had it on more days of that week, with your spot counts drawn on top. “Shift habit days later” moves the columns if your skin reacts a few days after. Under the chart, a sentence compares spots on weeks with the habit and weeks without.</p><p><strong>Totals</strong> counts each habit up through the period (a steeper line = more often), with spots as dots on the right axis and stress &amp; sleep shading behind. <strong>Daily status</strong> shows stress and sleep as a color strip.</p>
   </section>
   </div>
+  </div>
   <div class="topic">
   <h2>Experiments &amp; treatments</h2>
+  <div class="box">
   <section class="qa" id="experiments">
     <h3><a href="#experiments" style="color:inherit;text-decoration:none">How do experiments work?</a></h3>
     <p>Pick a habit to avoid (or have daily) for 2, 3, 4 or 6 weeks. SpeckLog compares your spots during the experiment with the same number of days just before it, skipping the first week of a longer one because skin takes days to respond. It accounts for neighbouring days being alike, and says either “a real change” or “could be chance”. It also shows how many logged days you kept to it.</p>
@@ -114,8 +99,10 @@
     <p>Use the <strong>Treatments</strong> card on the Calendar. Each day's page then shows the week of the course, and the time-lapse can show it too. You can add side effects (dry lips, dry skin…) as check-in items. SpeckLog only records; always follow your doctor's instructions.</p>
   </section>
   </div>
+  </div>
   <div class="topic">
   <h2>Reports, compare &amp; widgets</h2>
+  <div class="box">
   <section class="qa" id="doctor-report">
     <h3><a href="#doctor-report" style="color:inherit;text-decoration:none">How do I make a report for my doctor?</a></h3>
     <p>Calendar → <strong>Doctor Report</strong> (SpeckLog Plus) makes a PDF: spot counts at the start and end of the period with a weekly chart, your treatments, finished experiments, Patterns' hints, how often you logged each food, sleep and stress answer, and a few key photos with your marks. A <strong>spot map</strong> shows every spot you marked in the period as a heat map on your photo, so your doctor sees where breakouts keep coming back. Pick the period (4 weeks to all time) and how many photos, then share, print or AirDrop it. It's made on your iPhone and goes nowhere unless you share it.</p>
@@ -133,15 +120,19 @@
     <p>Yes, on iOS 18 and later: touch and hold the SpeckLog icon and choose <strong>Require Face ID</strong>. iOS then asks for Face ID (or your passcode) every time SpeckLog opens and hides it from the app switcher preview.</p>
   </section>
   </div>
+  </div>
   <div class="topic">
   <h2>Time-lapse</h2>
+  <div class="box">
   <section class="qa" id="timelapse">
     <h3><a href="#timelapse" style="color:inherit;text-decoration:none">How do I make a time-lapse?</a></h3>
     <p>Tap <strong>Time-lapse</strong> at the top right of the Calendar. It uses the first photo of each day, so you need photos on 14 days (from 2 days you can make a short one anyway). Choose the dates, marks, dates on screen, a before &amp; after ending and speed, then tap <strong>Make Video</strong> and save or share it.</p>
   </section>
   </div>
+  </div>
   <div class="topic">
   <h2>Backups &amp; data</h2>
+  <div class="box">
   <section class="qa" id="backup">
     <h3><a href="#backup" style="color:inherit;text-decoration:none">How do I back up or move to a new iPhone?</a></h3>
     <p>An iCloud backup of your iPhone, or a direct iPhone-to-iPhone transfer, brings SpeckLog's data along. Otherwise, go to Settings → Data → <strong>Export Backup</strong>, which makes one file with all your photos and check-ins, skincare products (with their photos), routines and weekly goals (optionally password-protected). Save it to Files or AirDrop it, then open it on the other iPhone and choose <strong>Merge</strong> or <strong>Replace</strong>.</p><p>If you set a password and forget it, the file can't be opened. Nobody, including us, can recover it.</p>
@@ -155,8 +146,10 @@
     <p>Settings → Data → <strong>Delete All Data</strong>. It offers to export a backup first, since deleting can't be undone. Deleting the app also removes its data.</p>
   </section>
   </div>
+  </div>
   <div class="topic">
   <h2>SpeckLog Plus &amp; tips</h2>
+  <div class="box">
   <section class="qa" id="plus">
     <h3><a href="#plus" style="color:inherit;text-decoration:none">What does SpeckLog Plus add?</a></h3>
     <p>Extras on top of the free app: a <strong>doctor visit report</strong> (PDF), <strong>Compare Days</strong> (side by side or overlaid), <strong>Home Screen and Lock Screen widgets</strong>, more theme, outline and mark colors, page backgrounds, title emoji and a time-lapse without the “Made with SpeckLog” credit. It's a one-time purchase, and new Plus features come with it. Tracking, Patterns, Insights, experiments, backups, the face outline guide and all app icons stay free.</p>
@@ -166,15 +159,19 @@
     <p>Open the SpeckLog Plus screen or the <strong>Tip Jar</strong> in Settings and tap <strong>Restore Purchases</strong>, signed in to the same Apple Account you bought with. Tips that add up to the Plus price unlock Plus too, and Restore finds them on iOS 18 and later.</p>
   </section>
   </div>
+  </div>
   <div class="topic">
   <h2>Reminders &amp; settings</h2>
+  <div class="box">
   <section class="qa" id="reminders">
     <h3><a href="#reminders" style="color:inherit;text-decoration:none">Why did my reminders stop?</a></h3>
     <p>Reminders are off until you turn them on in Settings, where you can also choose <strong>two reminders a day</strong> (say morning and evening, for two photos). Once on, SpeckLog schedules at most the next 3 days and skips days you've already logged, so they pause after 3 days without opening the app and restart when you open it. Also check iPhone Settings → Notifications → SpeckLog and any Focus mode.</p>
   </section>
   </div>
+  </div>
   <div class="topic">
   <h2>Privacy</h2>
+  <div class="box">
   <section class="qa" id="privacy">
     <h3><a href="#privacy" style="color:inherit;text-decoration:none">Is my data uploaded anywhere?</a></h3>
     <p>No. Photos and check-ins are stored only on your iPhone, there's no account, and Patterns and Insights are worked out on the device. We don't collect analytics, usage data or crash reports. Purchases go through Apple, and we never see your payment details. Read the full <a href="privacy.html">privacy policy</a>.</p>
@@ -183,6 +180,7 @@
     <h3><a href="#medical" style="color:inherit;text-decoration:none">Is SpeckLog medical advice?</a></h3>
     <p>No, it's a diary. For painful, cystic or scarring acne, see a doctor or dermatologist.</p>
   </section>
+  </div>
   </div>
 
   <div class="card contact">
@@ -207,5 +205,6 @@
     document.getElementById('none').classList.toggle('hidden', shown > 0);
   });
 </script>
+<script src="site.js"></script>
 </body>
 </html>
