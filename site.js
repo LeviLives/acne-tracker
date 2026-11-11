@@ -48,7 +48,7 @@
   header.innerHTML = `
     <div class="site-controls" role="group">
       <details class="site-pages">
-        <summary class="site-control"><span class="pages-label"></span><span class="page-name"></span></summary>
+        <summary class="site-control"><span class="pages-label"></span></summary>
         <nav class="page-menu"><ul></ul></nav>
       </details>
       <button class="site-control language-control" type="button"><span class="control-label"></span><span class="control-value"></span></button>
@@ -62,7 +62,6 @@
   const summary = details.querySelector('summary');
   const menu = details.querySelector('nav');
   const menuList = menu.querySelector('ul');
-  const pageName = summary.querySelector('.page-name');
   const languageControl = header.querySelector('.language-control');
   const themeControl = header.querySelector('.theme-control');
   const status = header.querySelector('.site-status');
@@ -83,7 +82,6 @@
     controls.setAttribute('aria-label', words.controls);
     menu.setAttribute('aria-label', words.pages);
     summary.querySelector('.pages-label').textContent = words.pages;
-    pageName.textContent = page.names[nameIndex];
     languageControl.querySelector('.control-label').textContent = words.language;
     const target = languageControl.querySelector('.control-value');
     target.lang = language === CHINESE ? ENGLISH : CHINESE;
