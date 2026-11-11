@@ -70,7 +70,7 @@ section.qa h3 a { color: inherit; text-decoration: none; }
 
 /* All page, language and appearance controls live together. */
 .site-header {
-  position: fixed; bottom: max(12px, env(safe-area-inset-bottom)); left: max(12px, env(safe-area-inset-left));
+  position: fixed; bottom: max(12px, env(safe-area-inset-bottom)); right: max(12px, env(safe-area-inset-right));
   z-index: 10; width: min(156px, calc(100% - 24px));
 }
 .site-controls { display: grid; gap: 4px; }
@@ -96,7 +96,7 @@ section.qa h3 a { color: inherit; text-decoration: none; }
 .control-value { font-weight: 650; }
 .pages-label, .control-label { color: var(--muted); }
 .page-menu {
-  position: absolute; bottom: calc(100% + 5px); left: 0; z-index: 2;
+  position: absolute; bottom: calc(100% + 5px); right: 0; z-index: 2;
   width: min(226px, calc(100vw - 24px));
   border: var(--outline-width) solid var(--outline); border-radius: 12px; background: var(--card);
   padding: 5px; box-shadow: 0 6px 18px #0002; max-height: calc(100dvh - 172px); overflow-y: auto;
