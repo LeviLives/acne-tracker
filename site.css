@@ -69,9 +69,14 @@ section.qa:target { background: var(--fill); border-radius: 12px; padding: 8px 1
 section.qa h3 a { color: inherit; text-decoration: none; }
 
 /* What's new */
+.release { margin-top: 20px; }
+.release-heading { margin: 0; color: var(--text); font-size: 27px; }
+.release-rule { width: 100%; margin: 6px 0 14px; border: 0; border-top: 1px solid var(--outline); }
 .entry h3 { margin: 0 0 2px; font-size: 19px; }
 .date { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
 .entry ul { margin: 6px 0 0; padding-left: 20px; }
+.feature-emoji { margin-inline-end: 5px; }
+.feature-date { display: block; margin-top: 2px; color: var(--muted); font-size: 0.8em; }
 .tag {
   display: inline-block; font-size: 12px; font-weight: 700; padding: 1px 9px; border-radius: 999px;
   background: var(--fill); border: 2px solid var(--outline); margin-left: 6px; vertical-align: middle;

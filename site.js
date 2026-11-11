@@ -19,6 +19,7 @@
   const file = location.pathname.split('/').pop() || 'index.html';
   const page = pages.find(entry => entry.en === file || entry[CHINESE] === file);
   if (!page) return;
+  const legalPage = page.en === 'privacy.html' || page.en === 'terms.html';
 
   const stored = (key) => {
     try { return localStorage.getItem(key); } catch { return null; }
@@ -78,7 +79,7 @@
     row.className = 'page-title';
     const icon = document.createElement('img');
     icon.className = 'title-app-icon';
-    icon.src = 'specklog-app-icon.png';
+    icon.src = 'specklog-app-icon.png?v=2';
     icon.width = 192;
     icon.height = 192;
     title.before(row);
@@ -221,10 +222,12 @@
   });
   window.addEventListener('storage', event => {
     if (event.key === MODE_KEY) setMode(event.newValue === 'dark');
-    if (event.key === LANGUAGE_KEY) showLanguage(event.newValue, false);
+    if (event.key === LANGUAGE_KEY && !legalPage) showLanguage(event.newValue, false);
   });
 
   renderPageTitle();
   updateControls();
-  showLanguage(stored(LANGUAGE_KEY), false);
+  // The in-app and App Store legal links point to a specific language. Keep that language
+  // on entry, while still letting a reader switch it from the site's controls.
+  if (!legalPage) showLanguage(stored(LANGUAGE_KEY), false);
 })();
