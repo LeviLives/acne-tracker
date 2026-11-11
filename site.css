@@ -5,8 +5,8 @@
   color-scheme: light;
 }
 :root[data-theme="dark"] {
-  --bg: #191919; --card: #2d2d2c; --text: #f0eee9; --muted: #b7b3aa; --outline: #d7d1c5;
-  --fill: #434340; --accent: #e9e3d9; --callout: #393938;
+  --bg: #16110e; --card: #241c17; --text: #f3ece5; --muted: #c5b5a7; --outline: #f0c9a2;
+  --fill: #382920; --accent: #f0c9a2; --callout: #2e221a;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
