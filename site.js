@@ -32,6 +32,8 @@
   let language = root.lang === CHINESE ? CHINESE : ENGLISH;
   let dark = stored(MODE_KEY) === 'dark';
   let loadNumber = 0;
+  // Privacy policy version: always the shipped one (1.0) unless the link says #v1.1. Nothing is remembered.
+  let policyVersion = location.hash === '#v1.1' ? '1.1' : '1.0';
   const documents = new Map([[language, { title: document.title, html: main.innerHTML }]]);
   const copy = {
     en: {
@@ -122,7 +124,7 @@
     menuList.replaceChildren(...pages.map(entry => {
       const item = document.createElement('li');
       const link = document.createElement('a');
-      link.href = entry[language];
+      link.href = entry[language] + (entry === pages[3] && policyVersion === '1.1' ? '#v1.1' : '');
       link.textContent = entry.names[nameIndex];
       if (entry === page) link.setAttribute('aria-current', 'page');
       item.append(link);
@@ -136,6 +138,15 @@
     contact.append(link);
     menuList.append(contact);
     setMode(dark);
+  }
+
+  function showVersion(version) {
+    if (!main.querySelector('.version-toggle')) return;
+    policyVersion = version;
+    main.querySelectorAll('.policy').forEach(section => section.classList.toggle('hidden', section.id !== 'v' + version));
+    main.querySelectorAll('.version-toggle a').forEach(link => {
+      link.setAttribute('aria-current', String(link.getAttribute('href') === '#v' + version));
+    });
   }
 
   function filterQuestions() {
@@ -185,6 +196,7 @@
       document.title = content.title;
       main.innerHTML = content.html;
       renderPageTitle();
+      showVersion(policyVersion);
       const search = main.querySelector('#q');
       if (search && query) search.value = query;
       filterQuestions();
@@ -203,6 +215,17 @@
     }
   }
 
+  main.addEventListener('click', event => {
+    const link = event.target.closest?.('.version-toggle a');
+    if (!link) return;
+    event.preventDefault();
+    showVersion(link.getAttribute('href') === '#v1.1' ? '1.1' : '1.0');
+    history.replaceState(null, '', link.getAttribute('href'));
+    updateControls();
+  });
+  window.addEventListener('hashchange', () => {
+    if (location.hash === '#v1.0' || location.hash === '#v1.1') { showVersion(location.hash.slice(2)); updateControls(); }
+  });
   main.addEventListener('input', event => {
     if (event.target.id === 'q') filterQuestions();
   });
@@ -226,6 +249,7 @@
   });
 
   renderPageTitle();
+  showVersion(policyVersion);
   updateControls();
   // The in-app and App Store legal links point to a specific language. Keep that language
   // on entry, while still letting a reader switch it from the site's controls.
