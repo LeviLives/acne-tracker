@@ -33,21 +33,24 @@
   let language = root.lang === CHINESE ? CHINESE : ENGLISH;
   let dark = stored(MODE_KEY) === 'dark';
   let loadNumber = 0;
-  // Privacy policy version: always the shipped one (1.0) unless the link says #v1.1. Nothing is remembered.
-  let policyVersion = location.hash === '#v1.1' ? '1.1' : '1.0';
+  // Privacy policy version: always the shipped one (the first section, 1.0) unless the link says #v1.1
+  // (or another policy section's id). Nothing is remembered.
+  const policyIds = () => [...main.querySelectorAll('section.policy[id^="v"]')].map(section => section.id.slice(1));
+  const DEFAULT_VERSION = policyIds()[0] || '1.0';
+  let policyVersion = location.hash.startsWith('#v') && policyIds().includes(location.hash.slice(2)) ? location.hash.slice(2) : DEFAULT_VERSION;
   const documents = new Map([[language, { title: document.title, html: main.innerHTML }]]);
   const copy = {
     en: {
       pages: 'Pages', language: 'Language', theme: 'Theme', light: 'Light', dark: 'Dark',
       help: 'Problem?', controls: 'Site controls', loading: 'Loading…',
-      failed: 'Couldn’t change the language. Please try again.',
+      failed: 'Couldn’t change the language. Please try again.', version: 'Policy version',
       appIcon: 'SpeckLog app icon', storeComing: 'App Store link coming soon', store: 'View SpeckLog on the App Store',
       more: n => `+${n} more`, sep: ', ',
     },
     'zh-Hans': {
       pages: '页面', language: '语言', theme: '外观', light: '浅色', dark: '深色',
       help: '遇到问题？', controls: '网站设置', loading: '正在加载…',
-      failed: '没能切换语言，请重试。',
+      failed: '没能切换语言，请重试。', version: '政策版本',
       appIcon: 'SpeckLog 应用图标', storeComing: '上架后会添加 App Store 链接', store: '在 App Store 查看 SpeckLog',
       more: n => `还有 ${n} 项`, sep: '、',
     },
@@ -162,7 +165,7 @@
     menuList.replaceChildren(...pages.map(entry => {
       const item = document.createElement('li');
       const link = document.createElement('a');
-      link.href = entry[language] + (entry.en === 'privacy.html' && policyVersion === '1.1' ? '#v1.1' : '');
+      link.href = entry[language] + (entry.en === 'privacy.html' && policyVersion !== DEFAULT_VERSION ? '#v' + policyVersion : '');
       link.textContent = entry.names[nameIndex];
       if (entry === page) link.setAttribute('aria-current', 'page');
       item.append(link);
@@ -394,13 +397,47 @@
     main.querySelector('#none')?.classList.toggle('hidden', shown > 0);
   }
 
+  // The version list floats above the site controls. It is built from the policy sections in the page
+  // (section.policy#v<version> with a data-label), so a new version only needs a new section.
+  let versionList = null;
+
   function showVersion(version) {
-    if (!main.querySelector('.version-toggle')) return;
+    const sections = [...main.querySelectorAll('section.policy[id^="v"]')];
+    versionList?.remove();
+    versionList = null;
+    document.body.classList.remove('has-versions');
+    if (sections.length === 0) return;
+    if (!sections.some(section => section.id === 'v' + version)) version = DEFAULT_VERSION;
     policyVersion = version;
-    main.querySelectorAll('.policy').forEach(section => section.classList.toggle('hidden', section.id !== 'v' + version));
-    main.querySelectorAll('.version-toggle a').forEach(link => {
-      link.setAttribute('aria-current', String(link.getAttribute('href') === '#v' + version));
+    sections.forEach(section => section.classList.toggle('hidden', section.id !== 'v' + version));
+    if (sections.length < 2) return;
+    const nav = document.createElement('nav');
+    nav.className = 'version-list';
+    nav.setAttribute('aria-label', copy[language].version);
+    const list = document.createElement('ul');
+    sections.forEach(section => {
+      const id = section.id.slice(1);
+      const item = document.createElement('li');
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.dataset.version = id;
+      button.textContent = section.dataset.label || id;
+      if (id === version) button.setAttribute('aria-current', 'true');
+      item.append(button);
+      list.append(item);
     });
+    nav.append(list);
+    nav.addEventListener('click', event => {
+      const button = event.target.closest?.('button[data-version]');
+      if (!button) return;
+      showVersion(button.dataset.version);
+      history.replaceState(null, '', button.dataset.version === DEFAULT_VERSION ? location.pathname : '#v' + button.dataset.version);
+      updateControls();
+      versionList?.querySelector(`[data-version="${button.dataset.version}"]`)?.focus();
+    });
+    versionList = nav;
+    header.prepend(nav);
+    document.body.classList.add('has-versions');
   }
 
   function filterQuestions() {
@@ -472,14 +509,6 @@
   }
 
   main.addEventListener('click', event => {
-    const link = event.target.closest?.('.version-toggle a');
-    if (!link) return;
-    event.preventDefault();
-    showVersion(link.getAttribute('href') === '#v1.1' ? '1.1' : '1.0');
-    history.replaceState(null, '', link.getAttribute('href'));
-    updateControls();
-  });
-  main.addEventListener('click', event => {
     const target = event.target;
     if (!target.closest) return;
     const toggle = target.closest('.fold-toggle');
@@ -521,7 +550,7 @@
   });
   window.addEventListener('hashchange', () => {
     revealHash();
-    if (location.hash === '#v1.0' || location.hash === '#v1.1') { showVersion(location.hash.slice(2)); updateControls(); }
+    if (location.hash.startsWith('#v') && policyIds().includes(location.hash.slice(2))) { showVersion(location.hash.slice(2)); updateControls(); }
   });
   main.addEventListener('input', event => {
     if (event.target.id === 'q') filterQuestions();
