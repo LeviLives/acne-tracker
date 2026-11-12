@@ -329,8 +329,8 @@
       more.textContent = words.more(list.children.length - 1);
       more.setAttribute('aria-controls', list.id);
       list.after(more);
-      // What's new groups start open; the long Report list starts folded.
-      setEntryFolded(entry, entry.classList.contains('report-group'));
+      // Every group starts folded (its first item shows, plus "+N more"): most readers want the headline.
+      setEntryFolded(entry, true);
     });
     main.querySelectorAll('section.release').forEach((release, index) => {
       const heading = release.querySelector(':scope > h2');
