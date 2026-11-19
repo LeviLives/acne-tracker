@@ -57,7 +57,7 @@
   };
 
   // The Problem flow: pick a kind, then open a pre-filled email. Subject tags stay in English so the inbox can filter.
-  const EMAIL = 'tianyiguo741@gmail.com';
+  const EMAIL = 'support@specklog.com';
   const problem = {
     en: {
       title: 'What kind of problem?', close: 'Close', back: 'Back', openMail: 'Open Mail', confirm: 'Send an email?',
