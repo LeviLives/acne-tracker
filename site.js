@@ -311,7 +311,10 @@
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'fold-toggle';
-    button.append(...heading.childNodes);
+    const label = document.createElement('span');
+    label.className = 'fold-label';
+    label.append(...heading.childNodes);
+    button.append(label);
     heading.append(button);
     return button;
   }
