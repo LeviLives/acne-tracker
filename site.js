@@ -33,10 +33,10 @@
   let language = root.lang === CHINESE ? CHINESE : ENGLISH;
   let dark = stored(MODE_KEY) === 'dark';
   let loadNumber = 0;
-  // Privacy policy version: always the shipped one (the first section, 1.0) unless the link says #v1.1
-  // (or another policy section's id). Nothing is remembered.
+  // Privacy opens on the current shipped policy; explicit #v1.0 links keep the archive accessible.
+  // The selection is not remembered.
   const policyIds = () => [...main.querySelectorAll('section.policy[id^="v"]')].map(section => section.id.slice(1));
-  const DEFAULT_VERSION = policyIds()[0] || '1.0';
+  const DEFAULT_VERSION = policyIds().includes('1.1') ? '1.1' : (policyIds()[0] || '1.1');
   let policyVersion = location.hash.startsWith('#v') && policyIds().includes(location.hash.slice(2)) ? location.hash.slice(2) : DEFAULT_VERSION;
   const documents = new Map([[language, { title: document.title, html: main.innerHTML }]]);
   const copy = {
