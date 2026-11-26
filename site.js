@@ -10,6 +10,7 @@
   if (!main) return;
 
   const pages = [
+    { en: 'tldr.html', 'zh-Hans': 'tldr-zh.html', names: ['TL;DR', '速览'] },
     { en: 'index.html', 'zh-Hans': 'support-zh.html', names: ['Support', '支持'] },
     { en: 'faq.html', 'zh-Hans': 'faq-zh.html', names: ['Questions & Answers', '常见问题'] },
     { en: 'updates.html', 'zh-Hans': 'updates-zh.html', names: ['What’s new', '更新记录'] },
